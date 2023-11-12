@@ -48,3 +48,5 @@ group :development do
 end
 
 gem "ffaker"
+gem "awesome_print"
+gem "pry"
