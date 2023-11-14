@@ -13,12 +13,10 @@ module ActiveRecord
   module ConnectionAdapters # :nodoc:
     class StaticAdapter < AbstractAdapter
       def initialize(...)
-        binding.pry
         super
       end
 
       def data_source_sql(name = nil, type: nil)
-        binding.pry
         ""
       end
 
@@ -53,6 +51,13 @@ module ActiveRecord
       end
 
       def internal_exec_query(sql, name = nil, binds = [], prepare: false, async: false)
+        binding.pry
+        build_result(columns: [], rows: [])
+        build_result(columns: ["id", "name"], rows: [[1, "Ontario"]])
+        # ActiveRecord::Result.new(["id", "name"], [[1, "Ontario"]], {})
+      end
+
+      def select_all(arel, name = nil, binds = [], preparable: nil, async: false)
         binding.pry
         build_result(columns: [], rows: [])
         build_result(columns: ["id", "name"], rows: [[1, "Ontario"]])
